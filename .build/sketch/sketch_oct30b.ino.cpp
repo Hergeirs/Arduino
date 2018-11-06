@@ -1,3 +1,6 @@
+#include <Arduino.h>
+#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 #define moisture_input A0
 #define divider_top 13
 #define divider_bottom 12
@@ -27,6 +30,7 @@ class SoilMoistureReader {
       // drive a current through the divider in one direction
       digitalWrite(pinUpper,LOW);
       digitalWrite(pinLower,HIGH);
+
       // wait a moment for capacitance effects to settle
       delay(1);
 
@@ -77,10 +81,23 @@ class TemperatureSensor {
       double voltage = reading * 5.0;
       voltage /= 1024.0;
 
+      // print out the voltage
+      Serial.print(voltage); Serial.println(" volts");
+
       // now print out the temperature
       double temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
                                                     //to degrees ((voltage - 500mV) times 100)
       return temperatureC;
+
+
+      // digitalWrite(triggerPin, HIGH);
+      // delay(1000);
+      // const unsigned reading = analogRead(readPin);
+      // // converting that reading to voltage, for 3.3v arduino use 3.3
+      // float voltage = reading * 5.0;
+      // voltage /= 1024.0;
+      // // Get Temperature;
+      // return (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
     }
 };
 
@@ -90,6 +107,11 @@ SoilMoistureReader soilReader(divider_top,divider_bottom,moisture_input);
 TemperatureSensor tempReader(8, A1);
 
 
+#line 107 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+void setup();
+#line 114 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+void loop(void);
+#line 107 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void setup () {
   // soilReader = SoilMoistureReader();
   Serial.begin(9600);

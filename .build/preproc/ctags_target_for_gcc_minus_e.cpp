@@ -1,6 +1,8 @@
-#define moisture_input A0
-#define divider_top 13
-#define divider_bottom 12
+# 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+# 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+
+
+
 
 
 
@@ -14,19 +16,20 @@ class SoilMoistureReader {
     SoilMoistureReader(const byte upperPin, const byte lowerPin, const byte pinAnalog)
     :pinUpper(upperPin), pinLower(lowerPin),analogPin(pinAnalog)
     {
-      pinMode(pinUpper, OUTPUT);
-      digitalWrite(pinUpper, LOW);
+      pinMode(pinUpper, 0x1);
+      digitalWrite(pinUpper, 0x0);
 
-      pinMode(pinLower, OUTPUT);
-      digitalWrite(pinLower, LOW);
-      pinMode(analogPin, INPUT);
+      pinMode(pinLower, 0x1);
+      digitalWrite(pinLower, 0x0);
+      pinMode(analogPin, 0x0);
     }
 
     const unsigned read() {
       unsigned reading;
       // drive a current through the divider in one direction
-      digitalWrite(pinUpper,LOW);
-      digitalWrite(pinLower,HIGH);
+      digitalWrite(pinUpper,0x0);
+      digitalWrite(pinLower,0x1);
+
       // wait a moment for capacitance effects to settle
       delay(1);
 
@@ -34,14 +37,14 @@ class SoilMoistureReader {
       reading=analogRead(analogPin);
 
       // reverse the current
-      digitalWrite(pinUpper,HIGH);
-      digitalWrite(pinLower,LOW);
+      digitalWrite(pinUpper,0x1);
+      digitalWrite(pinLower,0x0);
 
       // give it as long time as the original current
       delayMicroseconds(1100);
 
       // stop the current
-      digitalWrite(divider_bottom,LOW);
+      digitalWrite(12,0x0);
 
       return reading;
     }
@@ -61,32 +64,45 @@ class TemperatureSensor {
     TemperatureSensor(const byte pinTrigger, const byte readPin)
     : readPin(readPin), triggerPin(pinTrigger)
     {
-      pinMode(triggerPin, OUTPUT);
-      pinMode(readPin, INPUT);
-      digitalWrite(triggerPin, HIGH);
+      pinMode(triggerPin, 0x1);
+      pinMode(readPin, 0x0);
+      digitalWrite(triggerPin, 0x1);
     }
 
     const double readCelcius() {
 
       //getting the voltage reading from the temperature sensor
-      digitalWrite(triggerPin, HIGH);
+      digitalWrite(triggerPin, 0x1);
       delayMicroseconds(125);
       int reading = analogRead(readPin);
-      digitalWrite(triggerPin, LOW);
+      digitalWrite(triggerPin, 0x0);
       // converting that reading to voltage, for 3.3v arduino use 3.3
       double voltage = reading * 5.0;
       voltage /= 1024.0;
 
+      // print out the voltage
+      Serial.print(voltage); Serial.println(" volts");
+
       // now print out the temperature
-      double temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
+      double temperatureC = (voltage - 0.5) * 100 ; //converting from 10 mv per degree wit 500 mV offset
                                                     //to degrees ((voltage - 500mV) times 100)
       return temperatureC;
+
+
+      // digitalWrite(triggerPin, HIGH);
+      // delay(1000);
+      // const unsigned reading = analogRead(readPin);
+      // // converting that reading to voltage, for 3.3v arduino use 3.3
+      // float voltage = reading * 5.0;
+      // voltage /= 1024.0;
+      // // Get Temperature;
+      // return (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
     }
 };
 
 
 
-SoilMoistureReader soilReader(divider_top,divider_bottom,moisture_input);
+SoilMoistureReader soilReader(13,12,A0);
 TemperatureSensor tempReader(8, A1);
 
 
@@ -112,56 +128,7 @@ void loop (void) {
   Serial.println();
   delay(1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 179 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 // // #include <boarddefs.h>
 // // #include <ir_Lego_PF_BitStreamEncoder.h>
 // #include <IRremote.h>
@@ -235,28 +202,7 @@ void loop (void) {
 //   Serial.println("...");
 //   delay(500);
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 274 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 //   // //Read button state (pressed or not pressed?)
 //   // const unsigned buttonState = digitalRead(buttonPin);
 
