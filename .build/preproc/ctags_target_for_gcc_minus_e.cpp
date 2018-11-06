@@ -8,36 +8,35 @@
 
 class SoilMoistureReader {
   private:
-    const byte pinUpper;
-    const byte pinLower;
-    const byte analogPin;
+    const byte upper_pin_;
+    const byte lower_pin_;
+    const byte analog_pin_;
 
   public:
-    SoilMoistureReader(const byte upperPin, const byte lowerPin, const byte pinAnalog)
-    :pinUpper(upperPin), pinLower(lowerPin),analogPin(pinAnalog)
+    SoilMoistureReader(const byte upperPin, const byte lowerPin, const byte analogPin)
+    :upper_pin_(upperPin), lower_pin_(lowerPin),analog_pin_(analogPin)
     {
-      pinMode(pinUpper, 0x1);
-      digitalWrite(pinUpper, 0x0);
+      pinMode(upperPin, 0x1);
+      digitalWrite(upperPin, 0x0);
 
-      pinMode(pinLower, 0x1);
-      digitalWrite(pinLower, 0x0);
+      pinMode(lowerPin, 0x1);
+      digitalWrite(lowerPin, 0x0);
       pinMode(analogPin, 0x0);
     }
 
-    const unsigned read() {
+    unsigned read() {
       unsigned reading;
-      // drive a current through the divider in one direction
-      digitalWrite(pinUpper,0x0);
-      digitalWrite(pinLower,0x1);
+      // drive a current through the divider
+      digitalWrite(upper_pin_,0x0);
+      digitalWrite(lower_pin_,0x1);
       // wait a moment for capacitance effects to settle
       delay(1);
-
       // take a reading takes 100 microseconds to complete read.
-      reading=analogRead(analogPin);
+      reading=analogRead(analog_pin_);
 
       // reverse the current
-      digitalWrite(pinUpper,0x1);
-      digitalWrite(pinLower,0x0);
+      digitalWrite(upper_pin_,0x1);
+      digitalWrite(lower_pin_,0x0);
 
       // give it as long time as the original current
       delayMicroseconds(1100);
@@ -68,7 +67,7 @@ class TemperatureSensor {
       digitalWrite(triggerPin, 0x1);
     }
 
-    const double readCelcius() {
+    const double readCelsius() {
 
       //getting the voltage reading from the temperature sensor
       digitalWrite(triggerPin, 0x1);
@@ -95,7 +94,6 @@ TemperatureSensor tempReader(8, A1);
 void setup () {
   // soilReader = SoilMoistureReader();
   Serial.begin(9600);
-  noTone(2);
 }
 
 
@@ -108,13 +106,13 @@ void loop (void) {
   Serial.println();
 
   Serial.print("temperature C: ");
-  Serial.print(tempReader.readCelcius()); // print the analogical measurement of the experiment
+  Serial.print(tempReader.readCelsius()); // print the analogical measurement of the experiment
 
   // later i will improve here a calculation for derive Soil Moisture in %
   Serial.println();
   delay(1000);
 }
-# 165 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+# 163 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 // // #include <boarddefs.h>
 // // #include <ir_Lego_PF_BitStreamEncoder.h>
 // #include <IRremote.h>
@@ -188,7 +186,7 @@ void loop (void) {
 //   Serial.println("...");
 //   delay(500);
 // }
-# 260 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+# 258 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 //   // //Read button state (pressed or not pressed?)
 //   // const unsigned buttonState = digitalRead(buttonPin);
 

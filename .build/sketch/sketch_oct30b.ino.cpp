@@ -9,36 +9,35 @@
 
 class SoilMoistureReader {
   private:
-    const byte pinUpper;
-    const byte pinLower;
-    const byte analogPin;
+    const byte upper_pin_;
+    const byte lower_pin_;
+    const byte analog_pin_;
 
   public:
-    SoilMoistureReader(const byte upperPin, const byte lowerPin, const byte pinAnalog)
-    :pinUpper(upperPin), pinLower(lowerPin),analogPin(pinAnalog)
+    SoilMoistureReader(const byte upperPin, const byte lowerPin, const byte analogPin)
+    :upper_pin_(upperPin), lower_pin_(lowerPin),analog_pin_(analogPin)
     {
-      pinMode(pinUpper, OUTPUT);
-      digitalWrite(pinUpper, LOW);
+      pinMode(upperPin, OUTPUT);
+      digitalWrite(upperPin, LOW);
 
-      pinMode(pinLower, OUTPUT);
-      digitalWrite(pinLower, LOW);
+      pinMode(lowerPin, OUTPUT);
+      digitalWrite(lowerPin, LOW);
       pinMode(analogPin, INPUT);
     }
 
-    const unsigned read() {
+    unsigned read() {
       unsigned reading;
-      // drive a current through the divider in one direction
-      digitalWrite(pinUpper,LOW);
-      digitalWrite(pinLower,HIGH);
+      // drive a current through the divider
+      digitalWrite(upper_pin_,LOW);
+      digitalWrite(lower_pin_,HIGH);
       // wait a moment for capacitance effects to settle
       delay(1);
-
       // take a reading takes 100 microseconds to complete read.
-      reading=analogRead(analogPin);
+      reading=analogRead(analog_pin_);
 
       // reverse the current
-      digitalWrite(pinUpper,HIGH);
-      digitalWrite(pinLower,LOW);
+      digitalWrite(upper_pin_,HIGH);
+      digitalWrite(lower_pin_,LOW);
 
       // give it as long time as the original current
       delayMicroseconds(1100);
@@ -69,7 +68,7 @@ class TemperatureSensor {
       digitalWrite(triggerPin, HIGH);
     }
 
-    const double readCelcius() {
+    const double readCelsius() {
 
       //getting the voltage reading from the temperature sensor
       digitalWrite(triggerPin, HIGH);
@@ -93,15 +92,14 @@ SoilMoistureReader soilReader(divider_top,divider_bottom,moisture_input);
 TemperatureSensor tempReader(8, A1);
 
 
-#line 93 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 92 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void setup();
-#line 100 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 98 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void loop(void);
-#line 93 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 92 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void setup () {
   // soilReader = SoilMoistureReader();
   Serial.begin(9600);
-  noTone(2);
 }
 
 
@@ -114,7 +112,7 @@ void loop (void) {
   Serial.println();
 
   Serial.print("temperature C: ");
-  Serial.print(tempReader.readCelcius()); // print the analogical measurement of the experiment
+  Serial.print(tempReader.readCelsius()); // print the analogical measurement of the experiment
 
   // later i will improve here a calculation for derive Soil Moisture in %
   Serial.println();
