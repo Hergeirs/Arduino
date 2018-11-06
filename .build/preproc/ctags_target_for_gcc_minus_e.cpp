@@ -29,7 +29,6 @@ class SoilMoistureReader {
       // drive a current through the divider in one direction
       digitalWrite(pinUpper,0x0);
       digitalWrite(pinLower,0x1);
-
       // wait a moment for capacitance effects to settle
       delay(1);
 
@@ -80,23 +79,10 @@ class TemperatureSensor {
       double voltage = reading * 5.0;
       voltage /= 1024.0;
 
-      // print out the voltage
-      Serial.print(voltage); Serial.println(" volts");
-
       // now print out the temperature
       double temperatureC = (voltage - 0.5) * 100 ; //converting from 10 mv per degree wit 500 mV offset
                                                     //to degrees ((voltage - 500mV) times 100)
       return temperatureC;
-
-
-      // digitalWrite(triggerPin, HIGH);
-      // delay(1000);
-      // const unsigned reading = analogRead(readPin);
-      // // converting that reading to voltage, for 3.3v arduino use 3.3
-      // float voltage = reading * 5.0;
-      // voltage /= 1024.0;
-      // // Get Temperature;
-      // return (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
     }
 };
 
@@ -128,7 +114,7 @@ void loop (void) {
   Serial.println();
   delay(1000);
 }
-# 179 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+# 165 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 // // #include <boarddefs.h>
 // // #include <ir_Lego_PF_BitStreamEncoder.h>
 // #include <IRremote.h>
@@ -202,7 +188,7 @@ void loop (void) {
 //   Serial.println("...");
 //   delay(500);
 // }
-# 274 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+# 260 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 //   // //Read button state (pressed or not pressed?)
 //   // const unsigned buttonState = digitalRead(buttonPin);
 
