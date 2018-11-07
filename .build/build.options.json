@@ -1,7 +1,7 @@
 {
-  "additionalFiles": "",
+  "additionalFiles": "\\SoilMoistureSensor.cpp,\\SoilMoistureSensor.h,\\TemperatureSensor.cpp,\\TemperatureSensor.h",
   "builtInLibrariesFolders": "C:\\Program Files (x86)\\Arduino\\libraries",
-  "customBuildProperties": "build.path=c:\\Users\\herge\\Documents\\Arduino\\.build,build.warn_data_percentage=75,runtime.tools.arduinoOTA.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\arduinoOTA\\1.2.1,runtime.tools.avrdude.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avrdude\\6.3.0-arduino14,runtime.tools.avr-gcc.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2",
+  "customBuildProperties": "build.path=c:\\Users\\herge\\Documents\\Arduino\\.build,build.warn_data_percentage=75,runtime.tools.avrdude.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avrdude\\6.3.0-arduino14,runtime.tools.avr-gcc.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2,runtime.tools.arduinoOTA.path=C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\arduinoOTA\\1.2.1",
   "fqbn": "arduino:avr:uno",
   "hardwareFolders": "C:\\Program Files (x86)\\Arduino\\hardware,C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages",
   "otherLibrariesFolders": "C:\\Users\\herge\\Documents\\Arduino\\libraries",
