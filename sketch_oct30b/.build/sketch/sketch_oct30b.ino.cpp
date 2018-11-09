@@ -14,7 +14,7 @@ TemperatureSensor tempReader(8, A1);
 void setup();
 #line 18 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void loop(void);
-#line 51 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 49 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void toggle(unsigned pinNumber);
 #line 10 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void setup()
@@ -37,12 +37,10 @@ void loop(void)
 	static char a;
 	while (Serial.available() && (a = Serial.read()))
 		;
-	const unsigned moisture = soilReader.readPercent();
 
 	digitalWrite(4, HIGH);
-	// Serial.print("Soil moisture: ");
+	const unsigned moisture = soilReader.readPercent();
 	Serial.println(moisture);
-	// Serial.print("temperature C: ");
 	Serial.println(tempReader.readCelsius());
 	delay(1000);
 }
