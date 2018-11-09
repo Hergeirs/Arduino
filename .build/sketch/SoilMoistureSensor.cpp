@@ -17,7 +17,7 @@ unsigned SoilMoistureSensor::read()
 	// drive a current through the divider
 	digitalWrite(upper_pin_, LOW);
 	digitalWrite(lower_pin_, HIGH);
-	// wait a moment for capacitance effects to settle
+	// wait a moment for capacitance effects to kick in
 	delay(1);
 	// take a reading takes 100 microseconds to complete read.
 	reading = analogRead(analog_pin_);
@@ -26,7 +26,8 @@ unsigned SoilMoistureSensor::read()
 	digitalWrite(upper_pin_, HIGH);
 	digitalWrite(lower_pin_, LOW);
 
-	// give it as long time as the original current
+	// 1 millisecond + 100 microseconds for analogRead
+
 	delayMicroseconds(1100);
 
 	// stop the current

@@ -1,0 +1,27 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\standard"
+  },
+  {
+    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\.build\\sketch\\sketch_oct30b.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\.build\\sketch\\SoilMoistureSensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\.build\\sketch\\TemperatureSensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  }
+]

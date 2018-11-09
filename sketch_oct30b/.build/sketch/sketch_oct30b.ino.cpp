@@ -1,3 +1,6 @@
+#include <Arduino.h>
+#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 #include "TemperatureSensor.h"
 #include "SoilMoistureSensor.h"
 
@@ -7,6 +10,13 @@
 SoilMoistureSensor soilReader(divider_top, divider_bottom, moisture_input);
 TemperatureSensor tempReader(8, A1);
 
+#line 10 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+void setup();
+#line 18 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+void loop(void);
+#line 51 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+void toggle(unsigned pinNumber);
+#line 10 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
 void setup()
 {
 	pinMode(4, OUTPUT);

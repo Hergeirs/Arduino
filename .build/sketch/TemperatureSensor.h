@@ -4,14 +4,14 @@
 
 class TemperatureSensor
 {
-  private:
+private:
 	const uint8_t triggerPin;
 	const uint8_t readPin;
 
-  public:
+public:
 	TemperatureSensor(const uint8_t pinTrigger, const uint8_t readPin);
 
-	const double readCelsius();
+	const uint8_t readCelsius();
 };
 
 #endif
