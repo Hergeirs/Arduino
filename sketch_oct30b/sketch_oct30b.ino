@@ -27,12 +27,10 @@ void loop(void)
 	static char a;
 	while (Serial.available() && (a = Serial.read()))
 		;
-	const unsigned moisture = soilReader.readPercent();
 
 	digitalWrite(4, HIGH);
-	// Serial.print("Soil moisture: ");
+	const unsigned moisture = soilReader.readPercent();
 	Serial.println(moisture);
-	// Serial.print("temperature C: ");
 	Serial.println(tempReader.readCelsius());
 	delay(1000);
 }
