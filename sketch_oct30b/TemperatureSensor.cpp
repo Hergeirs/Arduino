@@ -8,7 +8,7 @@ TemperatureSensor::TemperatureSensor(const uint8_t pinTrigger, const uint8_t rea
 	digitalWrite(triggerPin, HIGH);
 }
 
-const int32_t TemperatureSensor::readCelsius()
+const int8_t TemperatureSensor::readCelsius()
 {
 	digitalWrite(triggerPin, HIGH);
 	delayMicroseconds(200);
