@@ -1,40 +1,47 @@
 #include <Arduino.h>
-#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
-#line 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 1 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
+#line 1 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
 #include "TemperatureSensor.h"
 #include "SoilMoistureSensor.h"
 
 #define moisture_input A0
 #define divider_top 13
 #define divider_bottom 12
-
 SoilMoistureSensor soilReader(divider_top, divider_bottom, moisture_input);
 TemperatureSensor tempReader(8, A1);
 
-#line 11 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 10 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
 void setup();
-#line 16 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 18 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
 void loop(void);
-#line 42 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 49 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
 void toggle(unsigned pinNumber);
-#line 11 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
+#line 10 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
 void setup()
 {
+	pinMode(4, OUTPUT);
+	digitalWrite(4, HIGH);
+	delay(1000);
 	Serial.begin(9600);
 }
 
 void loop(void)
 {
+	digitalWrite(4, LOW);
+	delay(1000);
 
+	while (Serial.available() == 0)
+	{
+		delay(1000);
+	}
+	static char a;
+	while (Serial.available() && (a = Serial.read()))
+		;
+
+	digitalWrite(4, HIGH);
 	const unsigned moisture = soilReader.readPercent();
-	Serial.print("Soil moisture: ");
-	Serial.print(moisture);
-	Serial.println();
-
-	Serial.print("temperature C: ");
-	Serial.print(tempReader.readCelsius());
-
-	Serial.println();
+	Serial.println(moisture);
+	Serial.println(tempReader.readCelsius());
 	delay(1000);
 }
 

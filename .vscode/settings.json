@@ -1,7 +1,6 @@
 {
     "C_Cpp.intelliSenseEngine": "Tag Parser",
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
-    "arduino.path": "C:/Program Files (x86)/Arduino",
     "arduino.logLevel": "info",
     "arduino.enableUSBDetection": true,
     "arduino.disableTestingOpen": false,
@@ -12,5 +11,4 @@
     ],
     "arduino.defaultBaudRate": 9600,
     "editor.renderWhitespace": "boundary",
-
 }

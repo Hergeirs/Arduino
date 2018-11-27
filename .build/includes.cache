@@ -2,25 +2,25 @@
   {
     "Sourcefile": "",
     "Include": "",
-    "Includepath": "C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino"
+    "Includepath": "/home/hergeirs/.arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino"
   },
   {
     "Sourcefile": "",
     "Include": "",
-    "Includepath": "C:\\Users\\herge\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\standard"
+    "Includepath": "/home/hergeirs/.arduino15/packages/arduino/hardware/avr/1.6.23/variants/standard"
   },
   {
-    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\.build\\sketch\\sketch_oct30b.ino.cpp",
+    "Sourcefile": "/home/hergeirs/Projects/Arduino/.build/sketch/sketch_oct30b.ino.cpp",
     "Include": "",
     "Includepath": ""
   },
   {
-    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\.build\\sketch\\SoilMoistureSensor.cpp",
+    "Sourcefile": "/home/hergeirs/Projects/Arduino/.build/sketch/SoilMoistureSensor.cpp",
     "Include": "",
     "Includepath": ""
   },
   {
-    "Sourcefile": "c:\\Users\\herge\\Documents\\Arduino\\.build\\sketch\\TemperatureSensor.cpp",
+    "Sourcefile": "/home/hergeirs/Projects/Arduino/.build/sketch/TemperatureSensor.cpp",
     "Include": "",
     "Includepath": ""
   }

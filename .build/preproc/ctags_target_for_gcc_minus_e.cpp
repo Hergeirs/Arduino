@@ -1,8 +1,7 @@
-# 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
-# 1 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino"
-# 2 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino" 2
-# 3 "c:\\Users\\herge\\Documents\\Arduino\\sketch_oct30b\\sketch_oct30b.ino" 2
-
+# 1 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
+# 1 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino"
+# 2 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino" 2
+# 3 "/home/hergeirs/Projects/Arduino/sketch_oct30b/sketch_oct30b.ino" 2
 
 
 
@@ -12,21 +11,29 @@ TemperatureSensor tempReader(8, A1);
 
 void setup()
 {
+ pinMode(4, 0x1);
+ digitalWrite(4, 0x1);
+ delay(1000);
  Serial.begin(9600);
 }
 
 void loop(void)
 {
+ digitalWrite(4, 0x0);
+ delay(1000);
 
+ while (Serial.available() == 0)
+ {
+  delay(1000);
+ }
+ static char a;
+ while (Serial.available() && (a = Serial.read()))
+  ;
+
+ digitalWrite(4, 0x1);
  const unsigned moisture = soilReader.readPercent();
- Serial.print("Soil moisture: ");
- Serial.print(moisture);
- Serial.println();
-
- Serial.print("temperature C: ");
- Serial.print(tempReader.readCelsius());
-
- Serial.println();
+ Serial.println(moisture);
+ Serial.println(tempReader.readCelsius());
  delay(1000);
 }
 
